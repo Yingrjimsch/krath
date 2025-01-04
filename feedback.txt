@@ -1,0 +1,73 @@
+3.3 progress: impl Fn() -> i32 + Send + Sync + 'static --> expected a `Fn()` closure, found `leptos::prelude::ReadSignal<{integer}>`
+the trait `Fn()` is not implemented for `leptos::prelude::ReadSignal<{integer}>`, which is required by `fn(ProgressBarProps<_>) -> impl leptos::IntoView {ProgressBar::<_>}: leptos::prelude::Component<_>`
+wrap the `leptos::prelude::ReadSignal<{integer}>` in a closure with no arguments: `|| { /* code */ }`
+
+
+3.4 let counters = (1..=length).map(|idx| RwSignal::new(idx));
+--> mismatched types
+expected struct `leptos::prelude::RwSignal<{integer}>`
+    found tuple `(_, _)` --> let counters = (1..=length).map(|idx| signal(idx));
+
+3.6 set_name(value); --> expected function, found `WriteSignal<std::string::String>` --> set_name.set(value);
+3.6 some_value --> some_value not defined --> some_value = RwSignal::new("".to_string());
+3.6 select set_value --> expected function, found `WriteSignal<std::string::String>` --> set_value.set
+3.7 Option<T> for completion purpose add the inline --> view! {
+    <p>{move || is_odd().then(|| "Ding ding ding!")
+}</p>
+}
+
+3.7 let message = move || if value.get() > 5 {
+    logging::log!("{}: rendering Big", value());
+    "Big"
+} else {
+    logging::log!("{}: rendering Small", value());
+    "Small"
+}; --> expected function, found `leptos::prelude::ReadSignal<{integer}>` --> let message_3 = move || {
+    if value_3.get() > 5 {
+        logging::log!("{}: rendering Big", value_3.get());
+        "Big"
+    } else {
+        logging::log!("{}: rendering Small", value_3.get());
+        "Small"
+    }
+};
+
+3.7 <Show/> example to code --> <Show
+when=move || { value.get() > 5 }
+fallback=move || view! { <p>{message_3}</p> }
+>
+  <p>{message_3}</p>
+</Show>
+
+3.7 view! {
+    <main>
+        {move || match is_odd() {
+            true if value() == 1 => {
+                // returns HtmlElement<Pre>
+                view! { <pre>"One"</pre> }.into_any()
+            },
+            false if value() == 2 => {
+                // returns HtmlElement<P>
+                view! { <p>"Two"</p> }.into_any()
+            }
+            // returns HtmlElement<Textarea>
+            _ => view! { <textarea>{value()}</textarea> }.into_any()
+        }}
+    </main>
+} --> expected function, found `leptos::prelude::ReadSignal<{integer}>` -->
+view! {
+    <main>
+        {move || match is_odd() {
+            true if value.get() == 1 => {
+                // returns HtmlElement<Pre>
+                view! { <pre>"One"</pre> }.into_any()
+            },
+            false if value.get() == 2 => {
+                // returns HtmlElement<P>
+                view! { <p>"Two"</p> }.into_any()
+            }
+            // returns HtmlElement<Textarea>
+            _ => view! { <textarea>{value.get()}</textarea> }.into_any()
+        }}
+    </main>
+}
