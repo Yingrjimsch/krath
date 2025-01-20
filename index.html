@@ -7,5 +7,28 @@
     .red {
       color: red;
     }
+    .card-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap; /* Allows cards to wrap if needed */
+        height: 100vh; /* Full viewport height for vertical centering */
+    }
+
+    .swipable-card {
+        width: 300px; /* Fixed width for consistency */
+        margin: 10px; /* Margin between cards */
+        padding: 20px;
+        background-color: #f0f0f0;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s; /* Smooth transition for swipe */
+    }
+
+    /* Optional: Add hover effect */
+    .swipable-card:hover {
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    }
+}
   </style>
   

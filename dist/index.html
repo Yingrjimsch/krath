@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-  <head><link rel="modulepreload" href="/krath-c8810defa2fc80a6.js" crossorigin=anonymous integrity="sha384-vDI+kWDpQUL0PmK4FjIfms/ngYrRItibggalRb0BWNf963PeJQJlR+PQE35jtaw6"><link rel="preload" href="/krath-c8810defa2fc80a6_bg.wasm" crossorigin=anonymous integrity="sha384-cbVHhQVL6cp/v5W99nw36q1sJro7FwXogIiG7D/y9vZWMaiFzJa5veSKQ4lJ2pv0" as="fetch" type="application/wasm"></head>
+  <head><link rel="modulepreload" href="/krath-6074601d53d31cdf.js" crossorigin=anonymous integrity="sha384-a9tDdhb++dv0SS13R38rJD2RdbhMvDK/qfpyDTL6QRRNeCqC57Jk1lKGYGz+hy7c"><link rel="preload" href="/krath-6074601d53d31cdf_bg.wasm" crossorigin=anonymous integrity="sha384-501SVhDahHBQhEsCXlauVnXCdaUQqmCh10S69WfQ5pUsO4gssIQVe9lrMEGoxqiI" as="fetch" type="application/wasm"></head>
   <body>
-<script type="module" nonce="HnASlV9A9JHYMU9SO/GPEw==">
-import init, * as bindings from '/krath-c8810defa2fc80a6.js';
-const wasm = await init({ module_or_path: '/krath-c8810defa2fc80a6_bg.wasm' });
+<script type="module" nonce="/2EbnFoj4SysN8vJeK2OTA==">
+import init, * as bindings from '/krath-6074601d53d31cdf.js';
+const wasm = await init({ module_or_path: '/krath-6074601d53d31cdf_bg.wasm' });
 
 
 window.wasmBindings = bindings;
@@ -147,5 +147,28 @@ dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
     .red {
       color: red;
     }
+    .card-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap; /* Allows cards to wrap if needed */
+        height: 100vh; /* Full viewport height for vertical centering */
+    }
+
+    .swipable-card {
+        width: 300px; /* Fixed width for consistency */
+        margin: 10px; /* Margin between cards */
+        padding: 20px;
+        background-color: #f0f0f0;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s; /* Smooth transition for swipe */
+    }
+
+    /* Optional: Add hover effect */
+    .swipable-card:hover {
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    }
+}
   </style>
   
